@@ -1,0 +1,7 @@
+Kaia testnet
+updated contract deployed, address 0x6eC688792b1148d31F88d18F99374Ac179D21C78
+
+
+
+Kaia Mainnet
+###

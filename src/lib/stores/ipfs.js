@@ -1,0 +1,24 @@
+import { create } from 'ipfs-http-client';
+
+const projectId = ''; //(lyle reminder) INFURA_PROJECT_ID
+const projectSecret = ''; //(lyle reminder) INFURA_PROJECT_SECRET
+const auth = 'Basic ' + Buffer.from(projectId + ':' + projectSecret).toString('base64');
+
+const client = create({
+  host: 'ipfs.infura.io',
+  port: 5001,
+  protocol: 'https',
+  headers: {
+    authorization: auth,
+  },
+});
+
+export async function uploadToIPFS(file) {
+  try {
+    const added = await client.add(file);
+    const url = `https://ipfs.infura.io/ipfs/${added.path}`;
+    return url;
+  } catch (error) {
+    console.error('Error uploading file to IPFS:', error);
+  }
+}
